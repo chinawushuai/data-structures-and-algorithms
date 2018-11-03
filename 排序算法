@@ -1,0 +1,123 @@
+1、冒泡排序-java实现
+
+时间复杂度分析：最好时间复杂度O(n),最坏时间复杂度O(n2),平均时间复杂度O(n2)
+是否是原地排序算法：是
+是否是稳定排序算法：是
+
+
+数组实现：
+public void bubbleSort(int[] array){
+  int len = array.length;
+  for(int i = 0;i<len;i++){
+    boolean flag=true;
+    for(int j=0;j<len-1-i;j++){
+      if(array[j]>array[j+1]){
+        swap(array,j,j+1);
+        flag=false;
+      }
+    }
+    if(flag) break;
+  }
+}
+
+
+2、插入排序-java实现
+
+时间复杂度分析：最好时间复杂度O(n),最坏时间复杂度O(n2),平均时间复杂度O(n2)
+是否是原地排序算法：是
+是否是稳定排序算法：是
+
+
+数组实现：
+public void insertSort(int[] array){
+  int len = array.length;
+  int current,preIndex;
+  for(int i = 1;i<len;i++){
+    current=array[i];
+    preIndex=i-1;
+    while(preIndex>=0 && current<array[preIndex]){
+      array[preIndex+1]=array[preIndex];
+      preIndex--;
+    }
+    array[preIndex+1]=current;
+  }
+}
+
+
+3、选择排序-java实现
+
+时间复杂度分析：最好时间复杂度O(n2),最坏时间复杂度O(n2),平均时间复杂度O(n2)
+是否是原地排序算法：是
+是否是稳定排序算法：否
+
+数组实现：
+public void selectSort(int[] array){
+  int len=array.length;
+  int minIndex;
+  for(int i = 0;i<len-1;i++){
+    for(j=i+1;j<len;j++){
+      if(array[j]<array[i]){
+        minIndex=j;
+      }
+    }
+    swap(array,i,minIndex);
+  }
+}
+
+4、归并排序-java实现
+
+实现思路：运用到分治思想，也就是递归实现。
+
+步骤：
+1）确立终止条件
+2）给出递归表达式
+3）代码实现
+
+时间复杂度分析：最好时间复杂度O(logn),最坏时间复杂度O(logn),平均时间复杂度O(logn)
+是否是原地排序算法：否，空间复杂度为O(n)
+是否是稳定排序算法：是
+
+数组实现：
+public int[] mergeSort(int[] array){
+  int len = array.length;
+  if(len<2) return array;
+  int mid=len/2;
+  int[] left = mergeSort()
+}
+
+
+5、快速排序-java实现
+
+实现思路：运用分治思想，递归实现
+
+步骤：
+1）确立终止条件
+2）给出递归表达式
+3）代码实现
+
+时间复杂度分析：最好时间复杂度O(logn),最坏时间复杂度O(n2),平均时间复杂度O(logn)
+是否是原地排序算法：是
+是否是稳定排序算法：否
+
+数组实现：
+public void quickSort(int[] array,int left,int right){
+  if(right>left){
+    int pilot=array[right];
+    int p = left-1;
+    int q = right;
+    while(true){
+      while(array[++p]<pilot)
+        ;
+      while(q>0)
+        if(array[--q]<=pilot){
+          break;
+        }
+      if(i>=j) break;
+      swap(array,p,q)
+    }
+    swap(array,i,right);
+    quickSort(array,left,i-1);
+    quickSort(array,i+1,right);
+  }
+
+}
