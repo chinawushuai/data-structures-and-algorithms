@@ -164,5 +164,6 @@ public void quickSort(int[] array,int left,int right){
 8、基数排序
 
 9、希尔排序
-10、堆
+
+10、堆排序
 
