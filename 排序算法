@@ -206,7 +206,39 @@ public void quickSort(int[] array,int left,int right){
 
 }
 
-链表实现
+链表实现：
+public void quickSort(ListNode head){
+  if(head==null || head.next==null) return;
+  quickSort(head,null);
+}
+
+public void quickSort(ListNode head,ListNode end){
+  if(head!=end){
+    ListNode pilot=partion(head,end);
+    quickSort(head,pilot);
+    quickSort(pilot.next,end);
+  }
+}
+
+public ListNode partion(ListNode head,ListNode end){
+  ListNode p=head;
+  ListNode q=head.next;
+  while(q!=null){
+    if(q.val<=head.val){
+      p=p.next;
+      swap(p,q);
+    }
+    q=q.next;
+  }
+  swap(head,p);
+  return p;
+}
+
+public void swap(ListNode left,ListNode right){
+  int tmp=left.val;
+  left.val=right.val;
+  right.val=tmp;
+}
 
 
 6、计数排序
