@@ -116,6 +116,59 @@ public void merge(int[] array,int left,int mid,int right){
   }
 }
 
+链表实现：
+public ListNode mergeSort(ListNode head){
+  if(head==null || head.next==null) return head;
+  ListNode mid=getMid(start,end);
+  ListNode node=mid.next;
+  mid.next=null;
+  ListNode left=mergeSort(head);
+  ListNode right=mergeSort(node);
+  return merge(left,right);
+}
+
+public ListNode merge(ListNode left,ListNode right){
+  ListNode p=left;
+  ListNode q=right;
+  ListNode result;
+  if(p.val<q.val){
+    head=p;
+    p=p.next;
+  }else{
+    head=q;
+    q=q.next;
+  }
+  tmp=head;
+  while(p!=null && q!=null){
+    if(p.val<=q.val){
+      tmp.next=p;
+      p=p.next;
+      tmp=tmp.next;
+    }else{
+      tmp.next=q;
+      q=q.next;
+      tmp=tmp.next;
+    }
+  }
+  if(p!=null){
+    tmp.next=p;
+  }
+  if(q!=null){
+    tmp.next=q;
+  }
+  return head;
+}
+
+public ListNode getMid(ListNode start,ListNode end){
+  ListNode slow=start;
+  ListNode fast=start;
+  while(fast.next!=end && fast.next.next!=end){
+    slow=slow.next;
+    fast=fast.next.next;
+  }
+  return slow;
+}
+
 
 5、快速排序-java实现
 
@@ -152,6 +205,8 @@ public void quickSort(int[] array,int left,int right){
   }
 
 }
+
+链表实现
 
 
 6、计数排序
