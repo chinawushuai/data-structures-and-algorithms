@@ -243,6 +243,10 @@ public void swap(ListNode left,ListNode right){
 
 6、计数排序
 
+时间复杂度分析：最好时间复杂度O(n+k),最坏时间复杂度O(n+k),平均时间复杂度O(n+k)
+是否是原地排序算法：否（时间复杂度O(n+k)）
+是否是稳定排序算法：是
+
 数组实现：
 public class CountingSort {
 
