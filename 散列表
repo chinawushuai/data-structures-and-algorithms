@@ -77,5 +77,6 @@ ps：散列表长度要尽可能选择素数
 解决方法：按照键值构建一个散列表，这样按照key值来删除、查找一个成员对象的时间复杂度就变成O(1)，同时借助跳表结构，其他操作也非常高效。
 
 3、Java LinkedHashMap
-LinkedHashMap本身就是一个支持LRU缓存淘汰策略的缓存系统，LinkedHashMap
+LinkedHashMap本身就是一个支持LRU缓存淘汰策略的缓存系统，LinkedHashMap是通过双向链表和散列表这两种数据结构组合实现的，Linked实际上是指的双向链表，
+并非指用链表法解决散列冲突。
 
