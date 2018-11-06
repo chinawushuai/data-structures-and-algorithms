@@ -1,0 +1,49 @@
+二分查找一（如何用最省内存的方式实现快速查找功能）
+
+1、简单的二分查找
+
+java数组实现：
+
+public int bsearch(int[] array,int n,int value){
+  int low = 0;
+  int high = n-1;
+  
+  while(low<=high){
+    int mid = (low+high)/2;
+    if(array[mid]==value){
+      return mid;
+    }else if(array[mid]<value){
+      low=mid+1;
+    }else{
+      high=mid-1;
+    }
+  }
+  
+  return -1;
+}
+
+容易出错的三个地方：
+1、循环退出条件：low<=high 而不是 low<high
+2、mid的取值：为避免溢出，mid=(low+high)/2  ====> mid=low+(high-low)/2 ====> mid=low+((high-low)>>1),相比除运算，位运算要快很多
+3、low和high的更新：low=mid+1；high=mid-1，如果low=mid和high=mid可能会发生死循环
+
+递归实现：
+
+public int bsearch(int[] array,int n,int val){
+  return bsearchInternally(a,0,n-1,val);
+}
+
+private int bsearchInternally(int[] array,int low,int high,int value){
+  if(low>high) return -1;
+  
+  int mid = low+(high-low)/2;
+  if(array[mid]==value){
+    return mid;
+  }else if(array[mid]<value){
+    return bsearchInternally(a,mid+1,high,value);
+  }else{
+    return bsearchInternally(a,low,mid-1,value);
+  }
+}
+
+2、二分查找应用场景的局限性
