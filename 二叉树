@@ -38,4 +38,42 @@
   
   4）层次遍历
   广度优先的遍历算法
+  
+  二叉树基础二：有了如此高效的散列表，为什么还需要二叉树？
+  
+  1、二叉查找树：
+    1）特点：二叉查找树的最大的特点就是支持动态数据集合的快速插入、删除、查找操作。
+    2）定义：二叉查找树是二叉树最常用的一种类型，也叫二叉搜索树，二叉查找树是为了实现快速查找而生的；二叉查找树要求，在树中的任意一个节点，其左子树中的
+            每个节点的值，都要小于这个节点的值，其右子树节点的值都大于这个节点的值。
+    问题：既然有了这么高效的散列表，使用二叉树的地方是不是都可以替换成散列表呢？有没有哪些地方是散列表做不了，必须使用二叉树来做的呢？
+    
+  2、二叉查找树的查找操作：
+    public class BinarySearchTree{
+      private Node tree;
+      
+      public Node find(int data){
+        Node p = tree;
+        while(p != null){
+          if(data<p.data) p=p.left;
+          else if(data > p.data) p=p.right;
+          else return p;
+        }
+        return null;
+      }
+      
+      public static class Node{
+        private int data;
+        private Node left;
+        private Node right;
+        
+        public Node(int data){
+          this.data = data;
+        }
+      }
+    }
+    
+    3、二叉查找树的插入操作
+    
+  
+  
 
