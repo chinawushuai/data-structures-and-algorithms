@@ -79,4 +79,14 @@ ps：每个节点的值都大于等于子树中的每个节点值的堆，叫做
     }
     我们对下标从n/2开始到1的数据进行堆化，下标是n/2+1到n的节点是叶子节点，我们不需要堆化
     
+    排序
     
+    public static void sort(int[] a,int n){
+        buildheap(a,n);
+        int k = n;
+        while(k>1){
+            swap(a,1,k);
+            --k;
+            heapify(a,k,1)
+        }
+    }
