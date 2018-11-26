@@ -57,4 +57,26 @@ ps：每个节点的值都大于等于子树中的每个节点值的堆，叫做
   }
   
   
-3、如何
+3、如何基于堆实现排序
+    建堆 排序
+    建堆：一种方法是借助前面所说的插入一个元素的思路
+        另一种思路从后往前处理数组，并且每个数据都是从上往下堆化
+    private static void buildHeap(int[] a,int n){
+        for(int i = n/2;i>=1;--i){
+            heapify(a,n,i);
+        }
+    }
+    
+    private static void heapify(int[] a,int n,int i){
+        while(true){
+            int maxPos = i;
+            if(i*2<=n && a[i]<a[i*2]) maxPos = i*2;
+            if(i*2+1<=n && a[maxPos]<a[i*2+1]) maxPos = i*2+1;
+            if(maxPos == i) break;
+            swap(a,i,maxPos);
+            i = maxPos;
+        }
+    }
+    我们
+    
+    
