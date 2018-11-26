@@ -1,0 +1,60 @@
+Question：为什么说堆排序没有快速排序快
+
+1、什么是堆
+1）堆是一个完全二叉树
+2）堆中每一个节点的值都必须大于等于（或小于等于）其子树中每个节点的值
+ps：每个节点的值都大于等于子树中的每个节点值的堆，叫做“大顶堆”，
+    对于每个节点的值都小于等于子树中每个节点值的堆叫作“小顶堆”
+    
+    
+2、如何实现一个堆
+1）往堆中插入一个元素
+  从下往上
+  public class Heap{
+    private int[] a;
+    private int n;
+    private int count;
+    
+    public Heap(int capicity){
+      a = new int[capicity+1];
+      n =capicity;
+      count = 0;
+    }
+    
+    public void insert(int data){
+      if(count>n) return;
+      ++count;
+      a[count] = data;
+      int i = count;
+      while(i/2>0 && a[i]>a[i/2]){
+        swap(a,i,i/2);
+        i=i/2;
+      }
+    }
+  }
+  
+2)删除堆顶元素
+  从上往下
+  我们先把堆顶元素删除，然后把最后一个元素放到堆顶，然后利用相同的父子元素对比方法
+  这样最后得到的仍然是完全二叉树
+  
+  public void removeMax(){
+    if(count == 0) return -1;
+    a[1] = a[count];
+    --count;
+    heapify(a,count,1);
+  }
+  
+  private void heapify(int[] a,int n,int i){
+    while(true){
+      int maxPos = i;
+      if(i*2<=n && a[i]<a[i*2]) maxPos = i*2;
+      if(i*2+1<=n && a[maxPos]<a[i*2+1]) maxPos = i*2+1;
+      if(maxPos == i) break;
+      swap(a,i,maxPos);
+      i = maxPos;
+    }
+  }
+  
+  
+  
